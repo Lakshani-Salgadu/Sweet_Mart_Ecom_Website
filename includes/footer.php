@@ -1,3 +1,4 @@
+<?php $base = defined('ADMIN_PAGE') ? '../' : ''; ?>
 <!-- ===================== FOOTER ===================== -->
 <footer class="sm-footer">
   <div class="container">
@@ -5,9 +6,8 @@
       <!-- Brand -->
       <div class="col-lg-4 col-md-6">
         <div class="footer-brand">
-          <a href="index.php" class="footer-logo d-flex align-items-center gap-2">
-            <img src="assets/images/logo.svg" alt="SweetMart Logo" class="logo-img" width="28" height="28">
-            <span>Sweet<span style="color:var(--pink)">Mart</span></span>
+          <a href="<?= $base ?>index.php" class="footer-logo">
+            🍰 <strong>Sweet<span>Mart</span></strong>
           </a>
           <p class="footer-tagline">Sri Lanka's favourite online dessert &amp; sweet gift store. Made with love, delivered to your door.</p>
           <div class="social-links">
@@ -23,11 +23,11 @@
       <div class="col-lg-2 col-md-6 col-6">
         <h5 class="footer-heading">Quick Links</h5>
         <ul class="footer-links">
-          <li><a href="index.php">Home</a></li>
-          <li><a href="#categories">Shop</a></li>
-          <li><a href="#custom-box">Custom Box</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="<?= $base ?>index.php">Home</a></li>
+          <li><a href="<?= $base ?>shop.php">Shop</a></li>
+          <li><a href="<?= $base ?>custom_box.php">Custom Box</a></li>
+          <li><a href="<?= $base ?>about.php">About Us</a></li>
+          <li><a href="<?= $base ?>contact.php">Contact</a></li>
         </ul>
       </div>
 
@@ -35,12 +35,12 @@
       <div class="col-lg-2 col-md-6 col-6">
         <h5 class="footer-heading">Categories</h5>
         <ul class="footer-links">
-          <li><a href="#categories">🎂 Cakes</a></li>
-          <li><a href="#categories">🧁 Cupcakes</a></li>
-          <li><a href="#categories">🍫 Brownies</a></li>
-          <li><a href="#categories">🍪 Cookies</a></li>
-          <li><a href="#categories">🍩 Donuts</a></li>
-          <li><a href="#categories">🎁 Gift Boxes</a></li>
+          <li><a href="<?= $base ?>shop.php?cat=cakes">🎂 Cakes</a></li>
+          <li><a href="<?= $base ?>shop.php?cat=cupcakes">🧁 Cupcakes</a></li>
+          <li><a href="<?= $base ?>shop.php?cat=brownies">🍫 Brownies</a></li>
+          <li><a href="<?= $base ?>shop.php?cat=cookies">🍪 Cookies</a></li>
+          <li><a href="<?= $base ?>shop.php?cat=donuts">🍩 Donuts</a></li>
+          <li><a href="<?= $base ?>shop.php?cat=gift-boxes">🎁 Gift Boxes</a></li>
         </ul>
       </div>
 
@@ -65,6 +65,6 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Custom JS -->
-<script src="assets/js/main.js"></script>
+<script src="<?= $base ?>assets/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,11 @@
+﻿/* Admin CSS */
+body.admin-body{background:#f8f4f1;font-family:"Poppins",sans-serif;}
+.admin-layout{display:flex;min-height:100vh;}
+.admin-topbar h2{font-size:1.3rem;font-weight:600;margin:0;color:var(--brown-dark,#3B2212);}
+.admin-card{background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(107,63,42,.10);padding:24px;}
+.btn-admin-primary{background:#6B3F2A;color:#fff;border:none;border-radius:8px;padding:9px 20px;font-weight:600;cursor:pointer;font-size:.88rem;transition:.2s;}
+.btn-admin-primary:hover{background:#3B2212;}
+.btn-admin-danger{background:#c0392b;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:.82rem;cursor:pointer;}
+.btn-admin-info{background:#2471a3;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:.82rem;cursor:pointer;}
+.form-control-admin{border:1.5px solid #e8d5c8;border-radius:8px;padding:10px 14px;width:100%;font-size:.9rem;}
+.form-control-admin:focus{border-color:#E8A0A0;outline:none;box-shadow:0 0 0 3px rgba(232,160,160,.2);}

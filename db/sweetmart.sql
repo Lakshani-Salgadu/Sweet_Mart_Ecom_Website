@@ -12,9 +12,25 @@ CREATE TABLE IF NOT EXISTS users (
     full_name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     phone VARCHAR(20),
+    shipping_address TEXT DEFAULT NULL,
+    billing_address TEXT DEFAULT NULL,
     password VARCHAR(255) NOT NULL,
+    password_hash VARCHAR(255) DEFAULT NULL,
     role ENUM('customer','admin') DEFAULT 'customer',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ===========================
+-- USER PROFILES
+-- ===========================
+CREATE TABLE IF NOT EXISTS user_profiles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL UNIQUE,
+    phone VARCHAR(20),
+    shipping_address TEXT,
+    billing_address TEXT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 -- ===========================
@@ -163,13 +179,18 @@ CREATE TABLE IF NOT EXISTS contact_messages (
 -- SEED: ADMIN USER
 -- Password: Admin@1234
 -- ===========================
-INSERT INTO users (full_name, email, phone, password, role) VALUES
-('Sweet Mart Admin', 'admin@sweetmart.lk', '+94 77 123 4567', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
+INSERT INTO users (full_name, email, phone, shipping_address, billing_address, password, password_hash, role) VALUES
+('Sweet Mart Admin', 'admin@sweetmart.lk', '+94 77 123 4567', 'Sweet Mart HQ, Colombo 06', 'Sweet Mart HQ, Colombo 06', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
 
--- Default customer (password: Customer@1)
-INSERT INTO users (full_name, email, phone, password, role) VALUES
-('Nimal Perera', 'nimal@example.com', '+94 71 234 5678', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer'),
-('Sanduni Silva', 'sanduni@example.com', '+94 76 345 6789', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer');
+-- Default customer (password: password)
+INSERT INTO users (full_name, email, phone, shipping_address, billing_address, password, password_hash, role) VALUES
+('Nimal Perera', 'nimal@example.com', '+94 71 234 5678', '45/A, Galle Road, Wellawatte', '45/A, Galle Road, Wellawatte', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer'),
+('Sanduni Silva', 'sanduni@example.com', '+94 76 345 6789', '12, Temple Road, Nugegoda', '12, Temple Road, Nugegoda', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer');
+
+INSERT INTO user_profiles (user_id, phone, shipping_address, billing_address) VALUES
+(1, '+94 77 123 4567', 'Sweet Mart HQ, Colombo 06', 'Sweet Mart HQ, Colombo 06'),
+(2, '+94 71 234 5678', '45/A, Galle Road, Wellawatte', '45/A, Galle Road, Wellawatte'),
+(3, '+94 76 345 6789', '12, Temple Road, Nugegoda', '12, Temple Road, Nugegoda');
 
 -- ===========================
 -- SEED: CATEGORIES
