@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
     }
     // Payment record
     $ps = $conn->prepare("INSERT INTO payments (order_id,method,status) VALUES (?,?,?)");
-    $pst = $pay==="card"?"Paid":"Pending";
+    $pst = "Pending";
     $ps->bind_param("iss",$oid,$pay,$pst); $ps->execute();
 
     // Auto-update profile address/phone if missing
@@ -82,6 +82,12 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
 
     clearCart();
     $_SESSION["last_order_id"] = $oid;
+
+    if ($pay === "card") {
+      header("Location: payhere_process.php?order_id=$oid");
+      exit;
+    }
+
     header("Location: order_confirmation.php"); exit;
   }
 }
@@ -118,7 +124,7 @@ require __DIR__ . "/includes/header.php";
               <input type="radio" name="payment_method" value="cod" checked id="pay-cod"> <div><div style="font-weight:600">💵 Cash on Delivery</div><div style="font-size:.82rem;color:#8a6a5a">Pay when your order arrives</div></div>
             </label>
             <label class="payment-option d-flex gap-3 align-items-center" onclick="this.classList.toggle('selected')">
-              <input type="radio" name="payment_method" value="card" id="pay-card"> <div><div style="font-weight:600">💳 Card Payment</div><div style="font-size:.82rem;color:#8a6a5a">Visa / Mastercard (secure simulation)</div></div>
+              <input type="radio" name="payment_method" value="card" id="pay-card"> <div><div style="font-weight:600">💳 Card Payment</div><div style="font-size:.82rem;color:#8a6a5a">Secure online payment via PayHere Sandbox</div></div>
             </label>
           </div>
         </div>
