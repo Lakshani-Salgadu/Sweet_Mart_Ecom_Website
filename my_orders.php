@@ -37,7 +37,8 @@ require __DIR__ . "/includes/header.php";
           <div style="font-weight:700;font-size:1.1rem;margin-top:.3rem;"><?= price($o['total']) ?></div>
         </div>
       </div>
-      <!-- Status Track -->
+      
+      
       <div class="order-status-track mb-4">
         <?php foreach($statuses as $i=>$s): ?>
         <div class="status-step <?= $i<$si?'done':($i===$si?'active':'') ?>">

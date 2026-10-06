@@ -264,4 +264,3 @@ INSERT INTO order_items (order_id, product_id, product_name, quantity, unit_pric
 -- ===========================
 -- Admin: admin@sweetmart.lk / password
 -- Customers: password (same hash above, replace with proper hash in production)
--- To generate a proper hash for "Admin@1234", use: password_hash('Admin@1234', PASSWORD_DEFAULT)

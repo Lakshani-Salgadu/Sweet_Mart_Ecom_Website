@@ -17,7 +17,7 @@ $orders = $conn->query("SELECT o.*,u.full_name AS customer FROM orders o LEFT JO
   <div class="admin-topbar">
     <button id="sidebarOpen" class="d-lg-none btn btn-sm" style="background:var(--pink-light)"><i class="bi bi-list"></i></button>
     <h2>🛒 All Orders</h2>
-  </div>
+</div>
   <?php showFlash(); ?>
   <div class="admin-card" style="overflow-x:auto;">
     <table class="admin-table">

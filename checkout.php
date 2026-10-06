@@ -2,7 +2,7 @@
 require_once __DIR__ . "/includes/db.php";
 require_once __DIR__ . "/includes/functions.php";
 
-// Protected Route: Checkout requires authentication
+// Protected Route - Checkout requires authentication
 if (!isLoggedIn()) {
     setFlash("info", "Please log in or register to complete your order.");
     header("Location: login.php?redirect=" . urlencode("checkout.php"));

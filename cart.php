@@ -1,4 +1,6 @@
-﻿<?php
+﻿/*cart php file */
+
+<?php
 require_once __DIR__ . "/includes/db.php";
 require_once __DIR__ . "/includes/functions.php";
 $pageTitle = "Shopping Cart";

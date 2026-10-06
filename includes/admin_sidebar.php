@@ -16,7 +16,8 @@ $currentAdmin = basename($_SERVER['PHP_SELF']);
       <div class="sidebar-username"><?= clean($_SESSION['full_name'] ?? 'Admin') ?></div>
       <div class="sidebar-role">Administrator</div>
     </div>
-  </div>
+</div>
+
 
   <nav class="sidebar-nav">
     <div class="nav-section-label">Dashboard</div>
